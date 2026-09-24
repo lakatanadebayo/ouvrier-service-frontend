@@ -3,7 +3,7 @@ import {Global} from "../../../global";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../../entity/User";
-import {UserCredentials} from "../../entity/UserCredentials";
+import {LoginRequest} from "../../entity/LoginRequest";
 
 @Injectable({
   providedIn: 'root'
@@ -14,27 +14,23 @@ export class UserService {
 
   constructor(private httpClient : HttpClient) { }
 
-  saveUser(user: User): Observable<any> {
-    return this.httpClient.post(this.baseUrl+"/etudiant/save/one", user)
+  save(user: User): Observable<any> {
+    return this.httpClient.post(this.baseUrl+"/user/save", user)
   }
 
-  updateUser(id: number, user: User): Observable<any> {
-    return this.httpClient.put(this.baseUrl+"/etudiant/update/"+id, user)
+  update(id: number, user: User): Observable<any> {
+    return this.httpClient.put(this.baseUrl+"/user/update/"+id, user)
   }
 
-  getAllUser(): Observable<any> {
-    return this.httpClient.get(this.baseUrl+"/etudiant/find/all")
+  getAll(): Observable<any> {
+    return this.httpClient.get(this.baseUrl+"/user/all")
   }
 
-  getUserById(id: number): Observable<any> {
-    return this.httpClient.get(this.baseUrl+"/etudiant/get/"+id)
+  getById(id: number): Observable<any> {
+    return this.httpClient.get(this.baseUrl+"/user/"+id)
   }
 
-  getAllDomains(): Observable<any> {
-    return this.httpClient.get(this.baseUrl+"/cours/find/all/domains")
-  }
-
-  login(userCredentials: UserCredentials): Observable<any> {
-    return this.httpClient.post(this.baseUrl+"/etudiant/login", userCredentials)
+  login(loginRequest: LoginRequest): Observable<any> {
+    return this.httpClient.post(this.baseUrl+"/user/authentication", loginRequest)
   }
 }

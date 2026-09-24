@@ -1,10 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DataService} from "../../service/data/data.service";
 import {Router} from "@angular/router";
-import {UserDefaultService} from "../../service/user-default/user-default.service";
 import {Subject, takeUntil} from "rxjs";
 import {MenuItem} from "../../entity/MenuItem";
-import {User} from "../../entity/User";
 
 @Component({
   selector: 'app-top-menu',
@@ -14,7 +12,6 @@ import {User} from "../../entity/User";
 export class TopMenuComponent implements OnInit, OnDestroy {
 
   localAuthStatus: boolean = false
-  localUser: User
 
   menuItems: MenuItem[] = [
     { label: 'Utilisateur', route: '/app/home/user' },
@@ -24,7 +21,7 @@ export class TopMenuComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>()
 
-  constructor(private dataService: DataService, private router: Router, private userDefaultService: UserDefaultService) {  }
+  constructor(private dataService: DataService, private router: Router) {  }
 
   ngOnInit(): void {
     this.getAuthStatusFromDataService()
@@ -47,7 +44,6 @@ export class TopMenuComponent implements OnInit, OnDestroy {
 
   signOut() {
     this.dataService.setAuthStatus(false)
-    this.dataService.setUser(this.userDefaultService.getDefaultUser())
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['app/home/recommandation'])
     })

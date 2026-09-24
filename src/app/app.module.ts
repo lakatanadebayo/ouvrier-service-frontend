@@ -5,31 +5,21 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
-import {RecommendationModule} from "./module/home/recommendation/recommendation.module";
-import {UserModule} from "./module/home/user/user.module";
 import {TopMenuModule} from "./module/top-menu/top-menu.module";
-import {AuthenticationModule} from "./module/authentication/authentication.module";
 import {HomeModule} from "./module/home/home.module";
-import {RessourceModule} from "./module/home/ressource/ressource.module";
 import {NgxPaginationModule} from "ngx-pagination";
-import {CustomRecommandationModule} from "./module/home/custom-recommandation/custom-recommandation.module";
 
 @NgModule({
-  declarations: [AppComponent],
   imports: [
+    AppComponent,
     BrowserModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     NgxPaginationModule,
-    UserModule,
-    RecommendationModule,
-    RessourceModule,
     TopMenuModule,
-    AuthenticationModule,
-    HomeModule,
-    CustomRecommandationModule
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
