@@ -13,7 +13,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: '', redirectTo: 'app/home/recommandation', pathMatch:"full" }
+  { path: '', redirectTo: 'home', pathMatch:"full" }
 ];
 
 @NgModule({

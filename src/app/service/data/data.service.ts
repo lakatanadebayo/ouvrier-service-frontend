@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {User} from "../../entity/User";
-import {UserDefaultService} from "../user-default/user-default.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +13,8 @@ export class DataService {
   private authStatus = new BehaviorSubject<boolean>(false);
   authStatus$ = this.authStatus.asObservable();
 
-  private user = new BehaviorSubject<User>(this.userDefaultService.getDefaultUser());
-  user$ = this.user.asObservable();
-
   private username = new BehaviorSubject<string>('test');
   username$ = this.username.asObservable();
-
-  constructor(private userDefaultService: UserDefaultService) { }
 
   setIsUpdateProcess(isUpdateProcess: boolean) {
     this.isUpdateProcess.next(isUpdateProcess);
@@ -28,10 +22,6 @@ export class DataService {
 
   setAuthStatus(authStatus: boolean) {
     this.authStatus.next(authStatus);
-  }
-
-  setUser(user: User) {
-    this.user.next(user);
   }
 
   setUsername(username: string) {

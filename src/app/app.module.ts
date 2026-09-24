@@ -8,6 +8,7 @@ import {CommonModule} from "@angular/common";
 import {TopMenuModule} from "./module/top-menu/top-menu.module";
 import {HomeModule} from "./module/home/home.module";
 import {NgxPaginationModule} from "ngx-pagination";
+import {FindOuvrierModule} from "./module/home/find-ouvrier/find-ouvrier.module";
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {NgxPaginationModule} from "ngx-pagination";
     AppRoutingModule,
     NgxPaginationModule,
     TopMenuModule,
-    HomeModule
+    HomeModule,
+    FindOuvrierModule
   ],
   providers: [],
   bootstrap: [AppComponent]
